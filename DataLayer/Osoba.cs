@@ -8,7 +8,7 @@ namespace DataLayer
 {
     public abstract class Osoba
     {
-        private int counter = Utilities.OsobaIdcounter;
+        private int counter = DataManager.OsobaIdcounter;
 
         public int Id { get; set; }
         public string Ime { get; set; }

@@ -9,7 +9,7 @@ namespace DataLayer
 {
     class FileRepositoryAdmin : IAdminRepository
     {
-        private const string PATH = @"Administratori.txt";
+        private string _path = Settings.Default.ResourceDir + "Administratori.txt";
 
         public FileRepositoryAdmin() => CreateFileIfNonExistant();
 
@@ -18,9 +18,9 @@ namespace DataLayer
         {
             try
             {
-                if (!File.Exists(PATH))
+                if (!File.Exists(_path))
                 {
-                    File.Create(PATH).Close();
+                    File.Create(_path).Close();
                 }
             }
             catch (Exception e)
@@ -44,7 +44,7 @@ namespace DataLayer
         public ISet<Administrator> GetAdminsFromFile()
         {
             ISet<Administrator> admini = new HashSet<Administrator>();
-            string[] lines = File.ReadAllLines(PATH);
+            string[] lines = File.ReadAllLines(_path);
             lines.ToList().ForEach(line => admini.Add(Administrator.ParseFromFileLine(line)));
             return admini;
         }
@@ -64,8 +64,8 @@ namespace DataLayer
             }
 
             admini.Add(admin);
-            File.WriteAllLines(PATH, admini.Select(a => a.PrepareForFileLine()));
-            Utilities.OsobaIdAddOne();
+            File.WriteAllLines(_path, admini.Select(a => a.PrepareForFileLine()));
+            DataManager.OsobaIdAddOne();
         }
 
         public Administrator GetAdminByEmailAndPassword(string email, string password) => GetAdminsFromFile().FirstOrDefault(a => a.Email.ToLower() == email.ToLower() && a.Lozinka == password);

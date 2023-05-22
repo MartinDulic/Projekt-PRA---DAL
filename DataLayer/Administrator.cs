@@ -9,7 +9,7 @@ namespace DataLayer
     public class Administrator : Korisnik
     {
 
-        private const char DEL = ':';
+        private const char DEL = '|';
         public Administrator() { }
         public Administrator(string ime, string prezime, string email, string lozinka) : base(ime, prezime, email, lozinka)
         {

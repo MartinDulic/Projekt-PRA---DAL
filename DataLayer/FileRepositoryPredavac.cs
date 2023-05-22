@@ -10,7 +10,7 @@ namespace DataLayer
 {
     class FileRepositoryPredavac : IPredavacRepository
     {
-        private const string PATH = @"Predavaci.txt";
+        private string _path = Settings.Default.ResourceDir + "Predavaci.txt";
 
         public FileRepositoryPredavac() => CreateFileIfNonExistant();
 
@@ -19,9 +19,9 @@ namespace DataLayer
         {
             try
             {
-                if (!File.Exists(PATH))
+                if (!File.Exists(_path))
                 {
-                    File.Create(PATH).Close();
+                    File.Create(_path).Close();
                 }
             }
             catch (Exception e)
@@ -35,11 +35,11 @@ namespace DataLayer
         public ISet<Predavac> GetPredavaciFromFile()
         {
             ISet<Predavac> predavaci = new HashSet<Predavac>();
-            string[] lines = File.ReadAllLines(PATH);
+            string[] lines = File.ReadAllLines(_path);
             lines.ToList().ForEach(line => predavaci.Add(Predavac.ParseFromFileLine(line)));
 
-            if (predavaci.Count() == 0) { Utilities.OsobaSetId(0); }
-            else { Utilities.OsobaSetId(predavaci.Last().Id); }
+            if (predavaci.Count() == 0) { DataManager.OsobaSetId(0); }
+            else { DataManager.OsobaSetId(predavaci.Last().Id); }
 
             return predavaci;
         }
@@ -58,8 +58,8 @@ namespace DataLayer
             }
 
             predavaci.Add(predavac);
-            File.WriteAllLines(PATH, predavaci.Select(p => p.PrepareForFileLine()));
-            Utilities.OsobaIdAddOne();
+            File.WriteAllLines(_path, predavaci.Select(p => p.PrepareForFileLine()));
+            DataManager.OsobaIdAddOne();
         }
 
         public Predavac GetPredavacById(int id) => GetPredavaciFromFile().FirstOrDefault(p => p.Id == id);
@@ -106,9 +106,9 @@ namespace DataLayer
                 }
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.OsobaSetId(predavaci2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.OsobaSetId(predavaci2.Last().Id);
 
             predavaci2.ToList().ForEach(AddPredavac);
 
@@ -142,9 +142,9 @@ namespace DataLayer
                 
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.OsobaSetId(predavaci2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.OsobaSetId(predavaci2.Last().Id);
 
             predavaci2.ToList().ForEach(AddPredavac);
 

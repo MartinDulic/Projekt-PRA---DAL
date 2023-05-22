@@ -9,7 +9,7 @@ namespace DataLayer
     public class Kolegij
     {
         private const char DEL = '%';
-        private int counter = Utilities.KolegijIdCounter;
+        private int counter = DataManager.KolegijIdCounter;
 
         public int Id { get; set; }
         public string Naziv { get; set; }

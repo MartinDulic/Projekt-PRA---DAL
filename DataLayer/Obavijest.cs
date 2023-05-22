@@ -12,7 +12,7 @@ namespace DataLayer
 
         private const char DEL = '|';
 
-        private int counter = Utilities.ObavjestIdCounter;
+        private int counter = DataManager.ObavjestIdCounter;
 
         public int Id { get; set; }
         public int KolegijId { get; set; }

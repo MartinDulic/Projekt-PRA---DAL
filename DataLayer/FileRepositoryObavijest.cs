@@ -9,7 +9,7 @@ namespace DataLayer
 {
     class FileRepositoryObavijest : IObavijestRepository
     {
-        private const string PATH = @"Obavijesti.txt";
+        private string _path = Settings.Default.ResourceDir + "Obavijesti.txt";
 
         public FileRepositoryObavijest() => CreateFileIfNonExistant();
 
@@ -18,9 +18,9 @@ namespace DataLayer
         {
             try
             {
-                if (!File.Exists(PATH))
+                if (!File.Exists(_path))
                 {
-                    File.Create(PATH).Close();
+                    File.Create(_path).Close();
                 }
             }
             catch (Exception e)
@@ -32,11 +32,11 @@ namespace DataLayer
         public ISet<Obavijest> GetObavijestiFromFile()
         {
             ISet<Obavijest> obavijesti = new HashSet<Obavijest>();
-            string[] lines = File.ReadAllLines(PATH);
+            string[] lines = File.ReadAllLines(_path);
             lines.ToList().ForEach(line => obavijesti.Add(Obavijest.ParseFromFileLine(line)));
 
-            if (obavijesti.Count() == 0) { Utilities.ObavijestSetId(0); }
-            else { Utilities.ObavijestSetId(obavijesti.Last().Id); }
+            if (obavijesti.Count() == 0) { DataManager.ObavijestSetId(0); }
+            else { DataManager.ObavijestSetId(obavijesti.Last().Id); }
 
             return obavijesti;
         }
@@ -55,8 +55,8 @@ namespace DataLayer
             }
 
             obavijesti.Add(obavijest);
-            File.WriteAllLines(PATH, obavijesti.Select( o=> o.PrepareForFileLine()));
-            Utilities.ObavijestIdAddOne();
+            File.WriteAllLines(_path, obavijesti.Select( o=> o.PrepareForFileLine()));
+            DataManager.ObavijestIdAddOne();
             
         }
 
@@ -116,9 +116,9 @@ namespace DataLayer
                 }
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.ObavijestSetId(obavijesti2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.ObavijestSetId(obavijesti2.Last().Id);
 
             obavijesti2.ToList().ForEach(AddObavijest);
 
@@ -152,9 +152,9 @@ namespace DataLayer
 
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.ObavijestSetId(obavijesti2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.ObavijestSetId(obavijesti2.Last().Id);
 
             obavijesti2.ToList().ForEach(AddObavijest);
 

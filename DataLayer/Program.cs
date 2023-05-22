@@ -12,10 +12,10 @@ namespace DataLayer
         {
 
 
-            IAdminRepository adminRepository = Utilities.GetAdminRepository();
-            IPredavacRepository predavacRepository = Utilities.GetPredavacRepository();
-            IKolegijiRepository kolegijiRepository = Utilities.GetKolegijiRepository();
-            IObavijestRepository obavijestRepository = Utilities.GetObavijestRepository();
+            IAdminRepository adminRepository = DataManager.GetAdminRepository();
+            IPredavacRepository predavacRepository = DataManager.GetPredavacRepository();
+            IKolegijiRepository kolegijiRepository = DataManager.GetKolegijiRepository();
+            IObavijestRepository obavijestRepository = DataManager.GetObavijestRepository();
 
         }
     }
