@@ -46,14 +46,18 @@
             label3 = new Label();
             btnExitMenu = new Button();
             pnlMenu = new Panel();
+            pnlMain = new Panel();
             pnlLogInForm.SuspendLayout();
             pnlMenu.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.Image = Properties.Resources.logoBot;
             label1.Location = new Point(-8, 709);
+            label1.MaximumSize = new Size(855, 44);
+            label1.MinimumSize = new Size(855, 44);
             label1.Name = "label1";
             label1.Size = new Size(855, 44);
             label1.TabIndex = 2;
@@ -171,6 +175,7 @@
             btnLogOut.TabIndex = 2;
             btnLogOut.Text = "Odjava";
             btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // btnCourse
             // 
@@ -203,6 +208,7 @@
             btnNotification.TabIndex = 4;
             btnNotification.Text = "Obavijesti";
             btnNotification.UseVisualStyleBackColor = true;
+            btnNotification.Click += btnNotification_Click;
             // 
             // btnLecturer
             // 
@@ -267,6 +273,7 @@
             // 
             // pnlMenu
             // 
+            pnlMenu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlMenu.BackColor = Color.FromArgb(21, 21, 21);
             pnlMenu.BackgroundImageLayout = ImageLayout.Center;
             pnlMenu.Controls.Add(btnExitMenu);
@@ -279,9 +286,19 @@
             pnlMenu.Controls.Add(btnLogOut);
             pnlMenu.Location = new Point(-8, 0);
             pnlMenu.Margin = new Padding(0);
+            pnlMenu.MaximumSize = new Size(1023, 64);
+            pnlMenu.MinimumSize = new Size(1023, 64);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.Size = new Size(1023, 64);
             pnlMenu.TabIndex = 1;
+            // 
+            // pnlMain
+            // 
+            pnlMain.BackColor = Color.FromArgb(235, 235, 235);
+            pnlMain.Location = new Point(0, 67);
+            pnlMain.Name = "pnlMain";
+            pnlMain.Size = new Size(1004, 639);
+            pnlMain.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -293,6 +310,9 @@
             Controls.Add(pnlLogInForm);
             Controls.Add(label1);
             Controls.Add(pnlMenu);
+            Controls.Add(pnlMain);
+            MaximumSize = new Size(1024, 768);
+            MinimumSize = new Size(1024, 768);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Load += MainForm_Load;
@@ -323,5 +343,6 @@
         private Panel pnlMenu;
         private TextBox tbPass;
         private TextBox tbEmail;
+        private Panel pnlMain;
     }
 }

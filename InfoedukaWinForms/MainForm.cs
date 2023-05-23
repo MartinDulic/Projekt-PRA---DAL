@@ -64,5 +64,27 @@ namespace InfoedukaWinForms
                 MessageBox.Show("Invalid user!");
             }
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            // show panel pnlLogIn
+            pnlLogInForm.Visible = true;
+            // hide panel pnlMenu
+            pnlMenu.Visible = false;
+            // clear all user controls
+            pnlMain.Controls.Clear();
+
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+            // open user control Notifications
+            Notifications notifications = new Notifications();
+            notifications.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(notifications);
+
+
+        }
     }
 }
