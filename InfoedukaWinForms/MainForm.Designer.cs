@@ -159,8 +159,8 @@
             btnLogOut.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
             btnLogOut.FlatAppearance.BorderSize = 0;
             btnLogOut.FlatAppearance.CheckedBackColor = Color.FromArgb(64, 64, 64);
-            btnLogOut.FlatAppearance.MouseDownBackColor = Color.FromArgb(21, 21, 21);
-            btnLogOut.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 64, 0);
+            btnLogOut.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 64, 0);
+            btnLogOut.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 0);
             btnLogOut.FlatStyle = FlatStyle.Flat;
             btnLogOut.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogOut.ForeColor = Color.Black;
