@@ -4,11 +4,7 @@ namespace InfoedukaWinForms
 {
     public partial class MainForm : Form
     {
-        // data manager repositorys
-        //IAdminRepository _adminRepository = DataManager.GetAdminRepository();
-        //IPredavacRepository _predavacRepository = DataManager.GetPredavacRepository();
-        //IKolegijiRepository _kolegijiRepository = DataManager.GetKolegijiRepository();
-        //IObavijestRepository _obavijestRepository = DataManager.GetObavijestRepository();
+        private bool isAdmin = false;
 
         public MainForm()
         {
@@ -57,6 +53,18 @@ namespace InfoedukaWinForms
                 pnlMenu.Visible = true;
                 // hide panel pnlLogIn
                 pnlLogInForm.Visible = false;
+
+                // hide btnLecturer
+                btnLecturer.Visible = false;
+
+                // set isAdmin
+                if (tbEmail.Text == "admin" && tbPass.Text == "admin")
+                {
+                    isAdmin = true;
+                    // show btnLecturer
+                    btnLecturer.Visible = true;
+                }
+
             }
             else
             {
@@ -76,15 +84,32 @@ namespace InfoedukaWinForms
 
         }
 
+        private void btnLecturer_Click(object sender, EventArgs e)
+        {
+            // open user control Lecturers
+            Lecturers lecturers = new Lecturers();
+            lecturers.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(lecturers);
+        }
+
         private void btnNotification_Click(object sender, EventArgs e)
         {
             // open user control Notifications
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(isAdmin);
             notifications.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(notifications);
 
+        }
 
+        private void btnCourse_Click(object sender, EventArgs e)
+        {
+            // open user control Courses
+            Courses courses = new Courses(isAdmin);
+            courses.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(courses);
         }
     }
 }

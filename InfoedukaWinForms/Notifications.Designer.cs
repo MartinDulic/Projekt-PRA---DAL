@@ -32,12 +32,12 @@
             btnAddNotification = new Button();
             lbNotifications = new ListBox();
             pnlAddNotification = new Panel();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            cbCategory = new ComboBox();
+            cbCourse = new ComboBox();
+            tbDescription = new TextBox();
+            tbHeading = new TextBox();
             btnNotificationCancel = new Button();
-            button1 = new Button();
+            btnNotificationCreate = new Button();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -81,12 +81,12 @@
             // 
             // pnlAddNotification
             // 
-            pnlAddNotification.Controls.Add(comboBox2);
-            pnlAddNotification.Controls.Add(comboBox1);
-            pnlAddNotification.Controls.Add(textBox2);
-            pnlAddNotification.Controls.Add(textBox1);
+            pnlAddNotification.Controls.Add(cbCategory);
+            pnlAddNotification.Controls.Add(cbCourse);
+            pnlAddNotification.Controls.Add(tbDescription);
+            pnlAddNotification.Controls.Add(tbHeading);
             pnlAddNotification.Controls.Add(btnNotificationCancel);
-            pnlAddNotification.Controls.Add(button1);
+            pnlAddNotification.Controls.Add(btnNotificationCreate);
             pnlAddNotification.Controls.Add(label6);
             pnlAddNotification.Controls.Add(label5);
             pnlAddNotification.Controls.Add(label4);
@@ -97,36 +97,36 @@
             pnlAddNotification.Size = new Size(657, 508);
             pnlAddNotification.TabIndex = 3;
             // 
-            // comboBox2
+            // cbCategory
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(132, 409);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(332, 23);
-            comboBox2.TabIndex = 11;
+            cbCategory.FormattingEnabled = true;
+            cbCategory.Location = new Point(153, 409);
+            cbCategory.Name = "cbCategory";
+            cbCategory.Size = new Size(332, 23);
+            cbCategory.TabIndex = 11;
             // 
-            // comboBox1
+            // cbCourse
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(132, 334);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(332, 23);
-            comboBox1.TabIndex = 10;
+            cbCourse.FormattingEnabled = true;
+            cbCourse.Location = new Point(153, 334);
+            cbCourse.Name = "cbCourse";
+            cbCourse.Size = new Size(332, 23);
+            cbCourse.TabIndex = 10;
             // 
-            // textBox2
+            // tbDescription
             // 
-            textBox2.Location = new Point(132, 139);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(332, 139);
-            textBox2.TabIndex = 9;
+            tbDescription.Location = new Point(153, 139);
+            tbDescription.Multiline = true;
+            tbDescription.Name = "tbDescription";
+            tbDescription.Size = new Size(332, 139);
+            tbDescription.TabIndex = 9;
             // 
-            // textBox1
+            // tbHeading
             // 
-            textBox1.Location = new Point(132, 61);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(332, 23);
-            textBox1.TabIndex = 8;
+            tbHeading.Location = new Point(153, 61);
+            tbHeading.Name = "tbHeading";
+            tbHeading.Size = new Size(332, 23);
+            tbHeading.TabIndex = 8;
             // 
             // btnNotificationCancel
             // 
@@ -143,24 +143,24 @@
             btnNotificationCancel.UseVisualStyleBackColor = false;
             btnNotificationCancel.Click += btnNotificationCancel_Click;
             // 
-            // button1
+            // btnNotificationCreate
             // 
-            button1.BackColor = Color.Blue;
-            button1.FlatAppearance.BorderColor = Color.Blue;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(441, 476);
-            button1.Name = "button1";
-            button1.Size = new Size(213, 29);
-            button1.TabIndex = 6;
-            button1.Text = "Potvrdi";
-            button1.UseVisualStyleBackColor = false;
+            btnNotificationCreate.BackColor = Color.Blue;
+            btnNotificationCreate.FlatAppearance.BorderColor = Color.Blue;
+            btnNotificationCreate.FlatStyle = FlatStyle.Flat;
+            btnNotificationCreate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNotificationCreate.ForeColor = Color.White;
+            btnNotificationCreate.Location = new Point(441, 476);
+            btnNotificationCreate.Name = "btnNotificationCreate";
+            btnNotificationCreate.Size = new Size(213, 29);
+            btnNotificationCreate.TabIndex = 6;
+            btnNotificationCreate.Text = "Potvrdi";
+            btnNotificationCreate.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(132, 391);
+            label6.Location = new Point(153, 391);
             label6.Name = "label6";
             label6.Size = new Size(60, 15);
             label6.TabIndex = 5;
@@ -169,7 +169,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(132, 316);
+            label5.Location = new Point(153, 316);
             label5.Name = "label5";
             label5.Size = new Size(43, 15);
             label5.TabIndex = 4;
@@ -178,7 +178,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(132, 121);
+            label4.Location = new Point(153, 121);
             label4.Name = "label4";
             label4.Size = new Size(31, 15);
             label4.TabIndex = 3;
@@ -187,7 +187,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(132, 39);
+            label3.Location = new Point(153, 39);
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
             label3.TabIndex = 2;
@@ -235,10 +235,10 @@
         private Label label3;
         private Label label2;
         private Button btnNotificationCancel;
-        private Button button1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private Button btnNotificationCreate;
+        private ComboBox cbCategory;
+        private ComboBox cbCourse;
+        private TextBox tbDescription;
+        private TextBox tbHeading;
     }
 }

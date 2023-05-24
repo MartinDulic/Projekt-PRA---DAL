@@ -192,6 +192,7 @@
             btnCourse.TabIndex = 3;
             btnCourse.Text = "Kolegiji";
             btnCourse.UseVisualStyleBackColor = true;
+            btnCourse.Click += btnCourse_Click;
             // 
             // btnNotification
             // 
@@ -225,6 +226,7 @@
             btnLecturer.TabIndex = 5;
             btnLecturer.Text = "Predavači";
             btnLecturer.UseVisualStyleBackColor = true;
+            btnLecturer.Click += btnLecturer_Click;
             // 
             // lblLogo1
             // 

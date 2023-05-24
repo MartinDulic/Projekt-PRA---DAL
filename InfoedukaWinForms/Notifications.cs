@@ -13,9 +13,12 @@ namespace InfoedukaWinForms
 {
     public partial class Notifications : UserControl
     {
-        public Notifications()
+        private bool isAdmin;
+
+        public Notifications(bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
         }
 
         private void btnExitWindow_Click(object sender, EventArgs e)
