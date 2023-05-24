@@ -1,7 +1,7 @@
 1%Matematika I%4%1
-2%Matematika II%5%3
-3%Matematika III%6%0
-4%Engleski jezik za IT%4%0
+2%Matematika II%5%6
+3%Matematika III%6%5
+4%Engleski jezik za IT%4%5
 5%Osnove digitalne elektronike%6%0
 6%Programiranje%6%0
 7%Računalni alati u poslovanju%4%3
@@ -14,8 +14,8 @@
 14%Uvod u baze podataka%5%0
 15%Autentikacijski sustavi i baze podataka%4%0
 16%Objektno orijentirano programiranje%6%0
-17%Oblikovanje baza podataka%5%0
-18%Operacijski sustavi%5%0
+17%Oblikovanje baza podataka%5%6
+18%Operacijski sustavi%5%6
 19%Standardi u primjeni internetske tehnologije%5%0
 20%Vjerojatnost i statistika%5%0
 21%OOP praktikum u .NET okolini%5%0

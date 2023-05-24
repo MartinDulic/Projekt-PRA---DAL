@@ -41,10 +41,10 @@
             btnLecturerCancel = new Button();
             btnLecturerCreate = new Button();
             label3 = new Label();
-            label2 = new Label();
+            lblAddOrUpdate = new Label();
             btnAddLecturer = new Button();
             lbLecturer = new Label();
-            flLecturers = new FlowLayoutPanel();
+            pnlLecturers = new Panel();
             pnlAddLecturer.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             pnlAddLecturer.Controls.Add(btnLecturerCancel);
             pnlAddLecturer.Controls.Add(btnLecturerCreate);
             pnlAddLecturer.Controls.Add(label3);
-            pnlAddLecturer.Controls.Add(label2);
+            pnlAddLecturer.Controls.Add(lblAddOrUpdate);
             pnlAddLecturer.Location = new Point(151, 65);
             pnlAddLecturer.Name = "pnlAddLecturer";
             pnlAddLecturer.Size = new Size(657, 508);
@@ -179,15 +179,15 @@
             label3.TabIndex = 2;
             label3.Text = "Ime";
             // 
-            // label2
+            // lblAddOrUpdate
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(132, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Unos Predavača";
+            lblAddOrUpdate.AutoSize = true;
+            lblAddOrUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAddOrUpdate.Location = new Point(3, 8);
+            lblAddOrUpdate.Name = "lblAddOrUpdate";
+            lblAddOrUpdate.Size = new Size(132, 21);
+            lblAddOrUpdate.TabIndex = 1;
+            lblAddOrUpdate.Text = "Unos Predavača";
             // 
             // btnAddLecturer
             // 
@@ -213,12 +213,12 @@
             lbLecturer.TabIndex = 4;
             lbLecturer.Text = "Prikaz Predavača";
             // 
-            // flLecturers
+            // pnlLecturers
             // 
-            flLecturers.Location = new Point(64, 97);
-            flLecturers.Name = "flLecturers";
-            flLecturers.Size = new Size(882, 473);
-            flLecturers.TabIndex = 8;
+            pnlLecturers.Location = new Point(114, 99);
+            pnlLecturers.Name = "pnlLecturers";
+            pnlLecturers.Size = new Size(832, 478);
+            pnlLecturers.TabIndex = 8;
             // 
             // Lecturers
             // 
@@ -228,7 +228,7 @@
             Controls.Add(pnlAddLecturer);
             Controls.Add(btnAddLecturer);
             Controls.Add(lbLecturer);
-            Controls.Add(flLecturers);
+            Controls.Add(pnlLecturers);
             MaximumSize = new Size(1004, 639);
             MinimumSize = new Size(1004, 639);
             Name = "Lecturers";
@@ -247,7 +247,7 @@
         private Button btnLecturerCancel;
         private Button btnLecturerCreate;
         private Label label3;
-        private Label label2;
+        private Label lblAddOrUpdate;
         private Button btnAddLecturer;
         private Label lbLecturer;
         private TextBox tbPassCreate;
@@ -258,6 +258,6 @@
         private Label label1;
         private Label label6;
         private ComboBox cbCoursesSelect;
-        private FlowLayoutPanel flLecturers;
+        private Panel pnlLecturers;
     }
 }
