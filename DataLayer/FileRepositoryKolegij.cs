@@ -142,6 +142,20 @@ namespace DataLayer
 
         }
 
+        public void UpdateKolegijZaPredavacId(int crsID, int id)
+        {
+            // update kolegij with id crsID to have predavacId = id
+            ISet<Kolegij> kolegiji = GetKolegijiFromFile();
 
+            foreach (var k in kolegiji)
+            {
+                if (k.Id == crsID)
+                {
+                    k.PredavacId = id;
+                    UpdateKolegij(k);
+                    return;
+                }
+            }
+        }
     }
 }

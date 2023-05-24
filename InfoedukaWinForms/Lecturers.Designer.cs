@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pnlAddLecturer = new Panel();
+            label6 = new Label();
+            cbCoursesSelect = new ComboBox();
             tbPassCreate = new TextBox();
             label4 = new Label();
             tbEmailCreate = new TextBox();
@@ -40,14 +42,16 @@
             btnLecturerCreate = new Button();
             label3 = new Label();
             label2 = new Label();
-            lbLecturers = new ListBox();
             btnAddLecturer = new Button();
             lbLecturer = new Label();
+            flLecturers = new FlowLayoutPanel();
             pnlAddLecturer.SuspendLayout();
             SuspendLayout();
             // 
             // pnlAddLecturer
             // 
+            pnlAddLecturer.Controls.Add(label6);
+            pnlAddLecturer.Controls.Add(cbCoursesSelect);
             pnlAddLecturer.Controls.Add(tbPassCreate);
             pnlAddLecturer.Controls.Add(label4);
             pnlAddLecturer.Controls.Add(tbEmailCreate);
@@ -64,9 +68,26 @@
             pnlAddLecturer.Size = new Size(657, 508);
             pnlAddLecturer.TabIndex = 7;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(143, 364);
+            label6.Name = "label6";
+            label6.Size = new Size(43, 15);
+            label6.TabIndex = 16;
+            label6.Text = "Kolegij";
+            // 
+            // cbCoursesSelect
+            // 
+            cbCoursesSelect.FormattingEnabled = true;
+            cbCoursesSelect.Location = new Point(143, 393);
+            cbCoursesSelect.Name = "cbCoursesSelect";
+            cbCoursesSelect.Size = new Size(332, 23);
+            cbCoursesSelect.TabIndex = 15;
+            // 
             // tbPassCreate
             // 
-            tbPassCreate.Location = new Point(143, 377);
+            tbPassCreate.Location = new Point(143, 305);
             tbPassCreate.Name = "tbPassCreate";
             tbPassCreate.Size = new Size(332, 23);
             tbPassCreate.TabIndex = 14;
@@ -74,7 +95,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(143, 355);
+            label4.Location = new Point(143, 283);
             label4.Name = "label4";
             label4.Size = new Size(30, 15);
             label4.TabIndex = 13;
@@ -82,7 +103,7 @@
             // 
             // tbEmailCreate
             // 
-            tbEmailCreate.Location = new Point(143, 282);
+            tbEmailCreate.Location = new Point(143, 225);
             tbEmailCreate.Name = "tbEmailCreate";
             tbEmailCreate.Size = new Size(332, 23);
             tbEmailCreate.TabIndex = 12;
@@ -90,7 +111,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(143, 260);
+            label5.Location = new Point(143, 203);
             label5.Name = "label5";
             label5.Size = new Size(36, 15);
             label5.TabIndex = 11;
@@ -98,7 +119,7 @@
             // 
             // tbLastName
             // 
-            tbLastName.Location = new Point(143, 178);
+            tbLastName.Location = new Point(143, 146);
             tbLastName.Name = "tbLastName";
             tbLastName.Size = new Size(332, 23);
             tbLastName.TabIndex = 10;
@@ -106,7 +127,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(143, 156);
+            label1.Location = new Point(143, 124);
             label1.Name = "label1";
             label1.Size = new Size(49, 15);
             label1.TabIndex = 9;
@@ -168,15 +189,6 @@
             label2.TabIndex = 1;
             label2.Text = "Unos Predavača";
             // 
-            // lbLecturers
-            // 
-            lbLecturers.FormattingEnabled = true;
-            lbLecturers.ItemHeight = 15;
-            lbLecturers.Location = new Point(63, 104);
-            lbLecturers.Name = "lbLecturers";
-            lbLecturers.Size = new Size(883, 469);
-            lbLecturers.TabIndex = 6;
-            // 
             // btnAddLecturer
             // 
             btnAddLecturer.FlatAppearance.BorderColor = Color.Blue;
@@ -201,15 +213,22 @@
             lbLecturer.TabIndex = 4;
             lbLecturer.Text = "Prikaz Predavača";
             // 
+            // flLecturers
+            // 
+            flLecturers.Location = new Point(64, 97);
+            flLecturers.Name = "flLecturers";
+            flLecturers.Size = new Size(882, 473);
+            flLecturers.TabIndex = 8;
+            // 
             // Lecturers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(235, 235, 235);
             Controls.Add(pnlAddLecturer);
-            Controls.Add(lbLecturers);
             Controls.Add(btnAddLecturer);
             Controls.Add(lbLecturer);
+            Controls.Add(flLecturers);
             MaximumSize = new Size(1004, 639);
             MinimumSize = new Size(1004, 639);
             Name = "Lecturers";
@@ -229,7 +248,6 @@
         private Button btnLecturerCreate;
         private Label label3;
         private Label label2;
-        private ListBox lbLecturers;
         private Button btnAddLecturer;
         private Label lbLecturer;
         private TextBox tbPassCreate;
@@ -238,5 +256,8 @@
         private Label label5;
         private TextBox tbLastName;
         private Label label1;
+        private Label label6;
+        private ComboBox cbCoursesSelect;
+        private FlowLayoutPanel flLecturers;
     }
 }

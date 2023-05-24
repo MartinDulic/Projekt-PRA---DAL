@@ -29,11 +29,74 @@ namespace InfoedukaWinForms
             // hide pnlAddLecturer
             pnlAddLecturer.Visible = false;
 
-            // get lecturers from database
-            ISet<Predavac> predavaci = DataManager.GetPredavacRepository().GetPredavaciFromFile();
+            try
+            {
+                // get lecturers from database
+                ISet<Predavac> predavaci = DataManager.GetPredavacRepository().GetPredavaciFromFile();
 
-            // add lecturers to listbox
-            predavaci.ToList().ForEach(p => lbLecturers.Items.Add(p));
+                // add each leacturer in a separate dynamically created panel
+                foreach (Predavac p in predavaci)
+                {
+                    // create new panel
+                    Panel pnlLecturer = new Panel();
+                    pnlLecturer.Dock = DockStyle.Top;
+                    pnlLecturer.Height = 50;
+                    pnlLecturer.BackColor = Color.White;
+                    pnlLecturer.BorderStyle = BorderStyle.FixedSingle;
+                    pnlLecturer.Name = "pnl" + p.Ime + p.Prezime;
+                    // create new label for lecturer name
+                    Label lblLecturerName = new Label();
+                    lblLecturerName.Text = p.Ime + " " + p.Prezime;
+                    lblLecturerName.AutoSize = true;
+                    lblLecturerName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    lblLecturerName.Location = new Point(10, 15);
+                    // create new button btnDeleteLecturer
+                    Button btnDeleteLecturer = new Button();
+                    btnDeleteLecturer.Text = "Obriši Predavača";
+                    btnDeleteLecturer.AutoSize = true;
+                    btnDeleteLecturer.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    btnDeleteLecturer.Location = new Point(400, 10);
+                    btnDeleteLecturer.Click += new EventHandler(btnDeleteLecturer_Click);
+                    // create new button btnEditLecturer
+                    Button btnEditLecturer = new Button();
+                    btnEditLecturer.Text = "Napravi Izmjenu";
+                    btnEditLecturer.AutoSize = true;
+                    btnEditLecturer.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    btnEditLecturer.Location = new Point(550, 10);
+                    btnEditLecturer.Click += new EventHandler(btnEditLecturer_Click);
+                    // create new label for lecturer email
+                    Label lblLecturerEmail = new Label();
+                    lblLecturerEmail.Text = p.Email;
+                    lblLecturerEmail.AutoSize = true;
+                    lblLecturerEmail.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    lblLecturerEmail.Location = new Point(10, 35);
+                    // add labels to panel
+                    pnlLecturer.Controls.Add(lblLecturerName);
+                    pnlLecturer.Controls.Add(btnDeleteLecturer);
+                    pnlLecturer.Controls.Add(btnEditLecturer);
+                    pnlLecturer.Controls.Add(lblLecturerEmail);
+
+                    // add panel to flLecturers
+                    flLecturers.Controls.Add(pnlLecturer);
+                }
+
+
+            }
+            catch (Exception)
+            {
+                // make descrete notice
+                MessageBox.Show("Pogreška pri učitavanju predavača! Pokušajte ponovno.");
+            }
+        }
+
+        private void btnEditLecturer_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnDeleteLecturer_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnAddLecturer_Click(object sender, EventArgs e)
@@ -41,9 +104,25 @@ namespace InfoedukaWinForms
             // open pnlAddLecturer
             pnlAddLecturer.Visible = true;
             // hide main content
-            lbLecturers.Visible = false;
+            flLecturers.Visible = false;
             lbLecturer.Visible = false;
             btnAddLecturer.Visible = false;
+
+            try
+            {
+                // add courses to combobox
+                ISet<Kolegij> kolegiji = DataManager.GetKolegijiRepository().GetKolegijiFromFile();
+                kolegiji.ToList().ForEach(k => cbCoursesSelect.Items.Add(k));
+                // show only name of course
+                cbCoursesSelect.DisplayMember = "Naziv";
+            }
+            catch (Exception)
+            {
+                // make descrente notice
+                MessageBox.Show("Pogreška pri učitavanju kolegija! Pokušajte ponovno.");
+            }
+
+
         }
 
         private void btnLecturerCancel_Click(object sender, EventArgs e)
@@ -58,16 +137,30 @@ namespace InfoedukaWinForms
             string lastName = tbLastName.Text;
             string email = tbEmailCreate.Text;
             string pass = tbPassCreate.Text;
+            int crsID = ((Kolegij)cbCoursesSelect.SelectedItem).Id;
 
-            // get courses from database
-            ISet<int> kolegijID  = new HashSet<int>();
-            kolegijID.Add(1);
+            // create int ISet with crsID
+            ISet<int> kolegijID = new HashSet<int>
+            {
+                crsID
+            };
 
             // create lecturer
             Predavac predavac = new Predavac(firstName, lastName, email, pass, kolegijID);
 
-            // add lecturer to database
-            DataManager.GetPredavacRepository().AddPredavac(predavac);
+            try
+            {
+                // add lecturer to database
+                DataManager.GetPredavacRepository().AddPredavac(predavac);
+                // update kolegij with crsID with the Id of predavac
+                DataManager.GetKolegijiRepository().UpdateKolegijZaPredavacId(crsID, predavac.Id);
+            }
+            catch (Exception)
+            {
+                // make descrente notice
+                MessageBox.Show("Predavač nije dodan! Pokušajte ponovno.");
+            }
+
 
             ReturnToMainPanel();
 
@@ -85,9 +178,23 @@ namespace InfoedukaWinForms
             pnlAddLecturer.Visible = false;
 
             // show main content
-            lbLecturers.Visible = true;
+            flLecturers.Visible = true;
             lbLecturer.Visible = true;
             btnAddLecturer.Visible = true;
+
+            // clear input fields
+            tbFirstName.Text = "";
+            tbLastName.Text = "";
+            tbEmailCreate.Text = "";
+            tbPassCreate.Text = "";
+            cbCoursesSelect.Items.Clear();
+
+            // clear flLecturers
+            flLecturers.Controls.Clear();
+
+            // reload lecturers
+            LoadLecturers();
+
         }
     }
 }
