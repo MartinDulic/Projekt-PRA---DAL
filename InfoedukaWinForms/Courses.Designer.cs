@@ -39,7 +39,7 @@
             btnCourseCancel = new Button();
             btnCourseCreate = new Button();
             label3 = new Label();
-            lblAddOrUpdate = new Label();
+            lblAddOrUpdateCrs = new Label();
             btnAddCourse = new Button();
             lbCourse = new Label();
             pnlCourses = new Panel();
@@ -58,7 +58,7 @@
             pnlAddCourse.Controls.Add(btnCourseCancel);
             pnlAddCourse.Controls.Add(btnCourseCreate);
             pnlAddCourse.Controls.Add(label3);
-            pnlAddCourse.Controls.Add(lblAddOrUpdate);
+            pnlAddCourse.Controls.Add(lblAddOrUpdateCrs);
             pnlAddCourse.Location = new Point(151, 65);
             pnlAddCourse.Name = "pnlAddCourse";
             pnlAddCourse.Size = new Size(657, 508);
@@ -159,15 +159,15 @@
             label3.TabIndex = 2;
             label3.Text = "Naziv";
             // 
-            // lblAddOrUpdate
+            // lblAddOrUpdateCrs
             // 
-            lblAddOrUpdate.AutoSize = true;
-            lblAddOrUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAddOrUpdate.Location = new Point(3, 8);
-            lblAddOrUpdate.Name = "lblAddOrUpdate";
-            lblAddOrUpdate.Size = new Size(116, 21);
-            lblAddOrUpdate.TabIndex = 1;
-            lblAddOrUpdate.Text = "Unos Kolegija";
+            lblAddOrUpdateCrs.AutoSize = true;
+            lblAddOrUpdateCrs.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAddOrUpdateCrs.Location = new Point(3, 8);
+            lblAddOrUpdateCrs.Name = "lblAddOrUpdateCrs";
+            lblAddOrUpdateCrs.Size = new Size(116, 21);
+            lblAddOrUpdateCrs.TabIndex = 1;
+            lblAddOrUpdateCrs.Text = "Unos Kolegija";
             // 
             // btnAddCourse
             // 
@@ -228,7 +228,7 @@
         private Button btnCourseCancel;
         private Button btnCourseCreate;
         private Label label3;
-        private Label lblAddOrUpdate;
+        private Label lblAddOrUpdateCrs;
         private Button btnAddCourse;
         private Label lbCourse;
         private ComboBox cbLecturer;

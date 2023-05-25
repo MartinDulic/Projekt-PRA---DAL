@@ -237,8 +237,6 @@ namespace InfoedukaWinForms
             // update kolegij with crsID with the Id of predavac
             DataManager.GetKolegijiRepository().UpdateKolegijZaPredavacId(crsID, predavac.Id);
 
-            // prompt success
-            MessageBox.Show("Predavač uspješno promijenjen!");
 
             ReturnToMainPanel();
 
@@ -269,8 +267,6 @@ namespace InfoedukaWinForms
                 DataManager.GetPredavacRepository().AddPredavac(predavac);
                 // update kolegij with crsID with the Id of predavac
                 DataManager.GetKolegijiRepository().UpdateKolegijZaPredavacId(crsID, predavac.Id);
-                // prompt success
-                MessageBox.Show("Predavač uspješno dodan!");
             }
             catch (Exception)
             {

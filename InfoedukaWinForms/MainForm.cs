@@ -5,6 +5,7 @@ namespace InfoedukaWinForms
     public partial class MainForm : Form
     {
         private bool isAdmin = false;
+        private int userId = -1;
 
         public MainForm()
         {
@@ -41,7 +42,6 @@ namespace InfoedukaWinForms
         {
             // hide panel pnlMenu
             pnlMenu.Visible = false;
-
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -63,6 +63,14 @@ namespace InfoedukaWinForms
                     isAdmin = true;
                     // show btnLecturer
                     btnLecturer.Visible = true;
+                }
+                else
+                {
+                    isAdmin = false;
+                    btnLecturer.Visible = false;
+                    // get user id
+                    Predavac user = DataManager.GetPredavacRepository().GetPredavacByEmailAndPassword(tbEmail.Text, tbPass.Text);
+                    userId = user.Id;
                 }
 
             }
@@ -106,7 +114,7 @@ namespace InfoedukaWinForms
         private void btnCourse_Click(object sender, EventArgs e)
         {
             // open user control Courses
-            Courses courses = new Courses(isAdmin);
+            Courses courses = new Courses(isAdmin, userId);
             courses.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(courses);

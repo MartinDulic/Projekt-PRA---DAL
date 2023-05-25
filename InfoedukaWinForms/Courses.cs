@@ -14,11 +14,13 @@ namespace InfoedukaWinForms
     public partial class Courses : UserControl
     {
         private bool isAdmin;
+        private int userId = -1;
 
-        public Courses(bool isAdmin)
+        public Courses(bool isAdmin, int userId)
         {
             InitializeComponent();
             this.isAdmin = isAdmin;
+            this.userId = userId;
         }
 
         private void Courses_Load(object sender, EventArgs e)
@@ -46,10 +48,23 @@ namespace InfoedukaWinForms
 
             try
             {
-                // get courses from database
-                ISet<Kolegij> kolegiji = DataManager.GetKolegijiRepository().GetKolegijiFromFile();
-                // get lecturers from database
-                ISet<Predavac> predavaci = DataManager.GetPredavacRepository().GetPredavaciFromFile();
+                ISet<Kolegij> kolegiji = new HashSet<Kolegij>();
+                ISet<Predavac> predavaci = new HashSet<Predavac>();
+                if (isAdmin)
+                {
+                    // get all courses from database
+                    kolegiji = DataManager.GetKolegijiRepository().GetKolegijiFromFile();
+                    // get all lecturers from database
+                    predavaci = DataManager.GetPredavacRepository().GetPredavaciFromFile();
+                }
+                else
+                {
+                    // get courses from database by user id
+                    kolegiji = DataManager.GetKolegijiRepository().GetKolegijiByPredavacId(userId);
+                    // get lecturer from database by user id
+                    Predavac p = DataManager.GetPredavacRepository().GetPredavacById(userId);
+                    predavaci.Add(p);
+                }
 
                 // add each course in a separate dynamically created panel
                 foreach (Kolegij kolegij in kolegiji)
@@ -123,8 +138,11 @@ namespace InfoedukaWinForms
 
                     // add labels to panel
                     pnlCourse.Controls.Add(lblCourseName);
-                    pnlCourse.Controls.Add(btnDeleteCourse);
-                    pnlCourse.Controls.Add(btnEditCourse);
+                    if (isAdmin)
+                    {
+                        pnlCourse.Controls.Add(btnDeleteCourse);
+                        pnlCourse.Controls.Add(btnEditCourse); 
+                    }
                     pnlCourse.Controls.Add(lblCourseDescription);
                     pnlCourse.Controls.Add(lblCourseLecturer);
                     pnlCourse.Controls.Add(lblCourseECTS);
@@ -153,12 +171,56 @@ namespace InfoedukaWinForms
 
         private void btnEditCourse_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            PrepareAddOrUpdateForm();
+
+            // change label text
+            lblAddOrUpdateCrs.Text = "Edit Kolegija";
+
+            try
+            {
+                // get selected kolegij
+                int id = Convert.ToInt32(((Button)sender).Parent.Tag);
+                Kolegij kolegij = DataManager.GetKolegijiRepository().GetKolegijById(id);
+                // fill in form with data
+                tbCourseName.Text = kolegij.Naziv;
+                tbCourseDescr.Text = kolegij.Opis;
+                tbECTS.Text = kolegij.Ects.ToString();
+
+                // set button tag to kolegij id
+                btnCourseCreate.Tag = kolegij.Id;
+            }
+            catch (Exception)
+            {
+                // make descrete notice
+                MessageBox.Show("Pogreška pri učitavanju kolegija! Pokušajte ponovno.");
+            }
         }
 
         private void btnDeleteCourse_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // prompt user to confirm delete
+            DialogResult dialogResult = MessageBox.Show("Jeste li sigurni da želite obrisati kolegij?", "Potvrda brisanja", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                // get selected kolegij
+                int id = (int)((Button)sender).Parent.Tag;
+                Kolegij kolegij = DataManager.GetKolegijiRepository().GetKolegijById(id);
+                // delete kolegij
+                DataManager.GetKolegijiRepository().DeleteKolegij(kolegij);
+                // refresh form
+                LoadCourses();
+            }
+            catch (Exception)
+            {
+                // make descrete notice
+                MessageBox.Show("Pogreška pri brisanju kolegija! Pokušajte ponovno.");
+            }
+
         }
 
         private void btnAddCourse_Click(object sender, EventArgs e)
@@ -166,7 +228,7 @@ namespace InfoedukaWinForms
             PrepareAddOrUpdateForm();
 
             // set form title
-            lblAddOrUpdate.Text = "Unos kolegija";
+            lblAddOrUpdateCrs.Text = "Unos Kolegija";
         }
 
         private void PrepareAddOrUpdateForm()
@@ -227,7 +289,7 @@ namespace InfoedukaWinForms
         private void btnCourseCreate_Click(object sender, EventArgs e)
         {
             // if sender is edit button
-            if (lblAddOrUpdate.Text == "Edit Kolegija")
+            if (lblAddOrUpdateCrs.Text == "Edit Kolegija")
             {
                 // get selected lecturer tag id in parent panel
                 int id = Convert.ToInt32(((Button)sender).Tag);
@@ -244,11 +306,9 @@ namespace InfoedukaWinForms
         private void AddCourse()
         {
             // get course data
-            string name = tbCourseName.Text;
-            string description = tbCourseDescr.Text;
-            int ects = Convert.ToInt32(tbECTS.Text);
-            Predavac predavac = (Predavac)cbLecturer.SelectedItem;
-            int predavacId = predavac.Id;
+            string name, description;
+            int ects, predavacId;
+            GetCourseDataFromForm(out name, out description, out ects, out predavacId);
 
             // create new course
             Kolegij kolegij = new Kolegij(name, ects, predavacId, description);
@@ -259,10 +319,6 @@ namespace InfoedukaWinForms
                 DataManager.GetKolegijiRepository().AddKolegij(kolegij);
                 // update predavac with kolegij id
                 DataManager.GetPredavacRepository().UpdatePredavacZaKolegijId(predavacId, kolegij.Id);
-
-                // make descrete notice
-                MessageBox.Show("Kolegij uspješno dodan!");              
-
 
             }
             catch (Exception)
@@ -278,9 +334,40 @@ namespace InfoedukaWinForms
             LoadCourses();
         }
 
+        private void GetCourseDataFromForm(out string name, out string description, out int ects, out int predavacId)
+        {
+            name = tbCourseName.Text;
+            description = tbCourseDescr.Text;
+            ects = Convert.ToInt32(tbECTS.Text);
+            Predavac predavac = (Predavac)cbLecturer.SelectedItem;
+            predavacId = predavac.Id;
+        }
+
         private void UpdateCourseById(int id)
         {
-            throw new NotImplementedException();
+            // get course data
+            string name, description;
+            int ects, predavacId;
+            GetCourseDataFromForm(out name, out description, out ects, out predavacId);
+
+            // get course by id and update it
+            Kolegij kolegij = DataManager.GetKolegijiRepository().GetKolegijById(id);
+            // update course
+            kolegij.Naziv = name;
+            kolegij.Opis = description;
+            kolegij.Ects = ects;
+            kolegij.PredavacId = predavacId;
+            // update course in file
+            DataManager.GetKolegijiRepository().UpdateKolegij(kolegij);
+
+            // update predavac with kolegij id
+            DataManager.GetPredavacRepository().UpdatePredavacZaKolegijId(predavacId, kolegij.Id);
+
+            // return to main panel
+            ReturnToMainPanel();
+
+            // reload courses
+            LoadCourses();
         }
     }
 }
