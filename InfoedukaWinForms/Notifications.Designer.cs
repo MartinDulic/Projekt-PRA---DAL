@@ -30,7 +30,6 @@
         {
             lbNotification = new Label();
             btnAddNotification = new Button();
-            lbNotifications = new ListBox();
             pnlAddNotification = new Panel();
             cbCategory = new ComboBox();
             cbCourse = new ComboBox();
@@ -42,7 +41,8 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            label2 = new Label();
+            lblAddOrUpdateNtf = new Label();
+            pnlNotifications = new Panel();
             pnlAddNotification.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,15 +70,6 @@
             btnAddNotification.UseVisualStyleBackColor = true;
             btnAddNotification.Click += btnAddNotification_Click;
             // 
-            // lbNotifications
-            // 
-            lbNotifications.FormattingEnabled = true;
-            lbNotifications.ItemHeight = 15;
-            lbNotifications.Location = new Point(64, 104);
-            lbNotifications.Name = "lbNotifications";
-            lbNotifications.Size = new Size(883, 469);
-            lbNotifications.TabIndex = 2;
-            // 
             // pnlAddNotification
             // 
             pnlAddNotification.Controls.Add(cbCategory);
@@ -91,7 +82,7 @@
             pnlAddNotification.Controls.Add(label5);
             pnlAddNotification.Controls.Add(label4);
             pnlAddNotification.Controls.Add(label3);
-            pnlAddNotification.Controls.Add(label2);
+            pnlAddNotification.Controls.Add(lblAddOrUpdateNtf);
             pnlAddNotification.Location = new Point(152, 65);
             pnlAddNotification.Name = "pnlAddNotification";
             pnlAddNotification.Size = new Size(657, 508);
@@ -156,6 +147,7 @@
             btnNotificationCreate.TabIndex = 6;
             btnNotificationCreate.Text = "Potvrdi";
             btnNotificationCreate.UseVisualStyleBackColor = false;
+            btnNotificationCreate.Click += btnNotificationCreate_Click;
             // 
             // label6
             // 
@@ -193,15 +185,23 @@
             label3.TabIndex = 2;
             label3.Text = "Naziv";
             // 
-            // label2
+            // lblAddOrUpdateNtf
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(130, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Unos Obavijesti";
+            lblAddOrUpdateNtf.AutoSize = true;
+            lblAddOrUpdateNtf.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAddOrUpdateNtf.Location = new Point(3, 8);
+            lblAddOrUpdateNtf.Name = "lblAddOrUpdateNtf";
+            lblAddOrUpdateNtf.Size = new Size(130, 21);
+            lblAddOrUpdateNtf.TabIndex = 1;
+            lblAddOrUpdateNtf.Text = "Unos Obavijesti";
+            // 
+            // pnlNotifications
+            // 
+            pnlNotifications.AutoScroll = true;
+            pnlNotifications.Location = new Point(69, 100);
+            pnlNotifications.Name = "pnlNotifications";
+            pnlNotifications.Size = new Size(878, 476);
+            pnlNotifications.TabIndex = 10;
             // 
             // Notifications
             // 
@@ -209,9 +209,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(235, 235, 235);
             Controls.Add(pnlAddNotification);
-            Controls.Add(lbNotifications);
             Controls.Add(btnAddNotification);
             Controls.Add(lbNotification);
+            Controls.Add(pnlNotifications);
             MaximumSize = new Size(1004, 639);
             MinimumSize = new Size(1004, 639);
             Name = "Notifications";
@@ -227,18 +227,18 @@
 
         private Label lbNotification;
         private Button btnAddNotification;
-        private ListBox lbNotifications;
         private Panel pnlAddNotification;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
-        private Label label2;
+        private Label lblAddOrUpdateNtf;
         private Button btnNotificationCancel;
         private Button btnNotificationCreate;
         private ComboBox cbCategory;
         private ComboBox cbCourse;
         private TextBox tbDescription;
         private TextBox tbHeading;
+        private Panel pnlNotifications;
     }
 }

@@ -42,8 +42,6 @@ namespace InfoedukaWinForms
         {
             // hide panel pnlMenu
             pnlMenu.Visible = false;
-            // press notifications button
-            btnNotification.PerformClick();
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -74,7 +72,8 @@ namespace InfoedukaWinForms
                     Predavac user = DataManager.GetPredavacRepository().GetPredavacByEmailAndPassword(tbEmail.Text, tbPass.Text);
                     userId = user.Id;
                 }
-
+                // press notifications button
+                btnNotification.PerformClick();
             }
             else
             {

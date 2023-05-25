@@ -20,17 +20,20 @@ namespace DataLayer
 
         public string Naziv { get; set; }
         public string Opis { get; set; }
+        public string Kategorija { get; set; }
+
         public DateTime DatumObjave { get; set; } = DateTime.Today;
         public DateTime DatumIsteka { get; set; }
 
         public Obavijest() { }
-        public Obavijest(int kolegijId, int kreatorId, string naziv, string opis, DateTime datumObjave, DateTime datumIsteka)
+        public Obavijest(int kolegijId, int kreatorId, string naziv, string opis, string kategorija, DateTime datumObjave, DateTime datumIsteka)
         {
             Id = counter;
             KolegijId = kolegijId;
             KreatorId = kreatorId;
             Naziv = naziv;
             Opis = opis;
+            Kategorija = kategorija;
             DatumObjave = datumObjave;
             DatumIsteka = datumIsteka;
 
@@ -41,7 +44,7 @@ namespace DataLayer
         public override bool Equals(object obj) => obj is Obavijest other ? KolegijId==other.KolegijId && Naziv==other.Naziv : false;
 
 
-        public string PrepareForFileLine() => $"{Id}{DEL}{KolegijId}{DEL}{KreatorId}{DEL}{Naziv}{DEL}{Opis}{DEL}{DatumObjave}{DEL}{DatumIsteka}";
+        public string PrepareForFileLine() => $"{Id}{DEL}{KolegijId}{DEL}{KreatorId}{DEL}{Naziv}{DEL}{Opis}{DEL}{Kategorija}{DEL}{DatumObjave}{DEL}{DatumIsteka}";
 
         public static Obavijest ParseFromFileLine(string line)
         {
@@ -54,8 +57,9 @@ namespace DataLayer
                 KreatorId=int.Parse(data[2]),
                 Naziv=data[3],
                 Opis=data[4],
-                DatumObjave=DateTime.Parse(data[5]),
-                DatumIsteka=DateTime.Parse(data[6])
+                Kategorija = data[5],
+                DatumObjave=DateTime.Parse(data[6]),
+                DatumIsteka=DateTime.Parse(data[7])
 
             };
 
