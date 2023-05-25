@@ -51,7 +51,7 @@ namespace InfoedukaWinForms
                     Label lblLecturerName = new Label();
                     lblLecturerName.Text = p.Ime + " " + p.Prezime;
                     lblLecturerName.AutoSize = true;
-                    lblLecturerName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    lblLecturerName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
                     lblLecturerName.Location = new Point(10, 15);
                     // create new button btnDeleteLecturer
                     Button btnDeleteLecturer = new Button();

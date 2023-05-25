@@ -215,6 +215,7 @@
             // 
             // pnlLecturers
             // 
+            pnlLecturers.AutoScroll = true;
             pnlLecturers.Location = new Point(114, 99);
             pnlLecturers.Name = "pnlLecturers";
             pnlLecturers.Size = new Size(832, 478);

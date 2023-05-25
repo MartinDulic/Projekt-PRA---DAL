@@ -39,10 +39,10 @@
             btnCourseCancel = new Button();
             btnCourseCreate = new Button();
             label3 = new Label();
-            label2 = new Label();
-            lbCourses = new ListBox();
+            lblAddOrUpdate = new Label();
             btnAddCourse = new Button();
             lbCourse = new Label();
+            pnlCourses = new Panel();
             pnlAddCourse.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             pnlAddCourse.Controls.Add(btnCourseCancel);
             pnlAddCourse.Controls.Add(btnCourseCreate);
             pnlAddCourse.Controls.Add(label3);
-            pnlAddCourse.Controls.Add(label2);
+            pnlAddCourse.Controls.Add(lblAddOrUpdate);
             pnlAddCourse.Location = new Point(151, 65);
             pnlAddCourse.Name = "pnlAddCourse";
             pnlAddCourse.Size = new Size(657, 508);
@@ -158,24 +158,15 @@
             label3.TabIndex = 2;
             label3.Text = "Naziv";
             // 
-            // label2
+            // lblAddOrUpdate
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(116, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Unos Kolegija";
-            // 
-            // lbCourses
-            // 
-            lbCourses.FormattingEnabled = true;
-            lbCourses.ItemHeight = 15;
-            lbCourses.Location = new Point(63, 104);
-            lbCourses.Name = "lbCourses";
-            lbCourses.Size = new Size(883, 469);
-            lbCourses.TabIndex = 6;
+            lblAddOrUpdate.AutoSize = true;
+            lblAddOrUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAddOrUpdate.Location = new Point(3, 8);
+            lblAddOrUpdate.Name = "lblAddOrUpdate";
+            lblAddOrUpdate.Size = new Size(116, 21);
+            lblAddOrUpdate.TabIndex = 1;
+            lblAddOrUpdate.Text = "Unos Kolegija";
             // 
             // btnAddCourse
             // 
@@ -201,15 +192,23 @@
             lbCourse.TabIndex = 4;
             lbCourse.Text = "Kolegiji";
             // 
+            // pnlCourses
+            // 
+            pnlCourses.AutoScroll = true;
+            pnlCourses.Location = new Point(86, 97);
+            pnlCourses.Name = "pnlCourses";
+            pnlCourses.Size = new Size(860, 476);
+            pnlCourses.TabIndex = 9;
+            // 
             // Courses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(235, 235, 235);
             Controls.Add(pnlAddCourse);
-            Controls.Add(lbCourses);
             Controls.Add(btnAddCourse);
             Controls.Add(lbCourse);
+            Controls.Add(pnlCourses);
             MaximumSize = new Size(1004, 639);
             MinimumSize = new Size(1004, 639);
             Name = "Courses";
@@ -228,8 +227,7 @@
         private Button btnCourseCancel;
         private Button btnCourseCreate;
         private Label label3;
-        private Label label2;
-        private ListBox lbCourses;
+        private Label lblAddOrUpdate;
         private Button btnAddCourse;
         private Label lbCourse;
         private ComboBox cbLecturer;
@@ -238,5 +236,6 @@
         private Label label4;
         private TextBox tbCourseDescr;
         private Label label1;
+        private Panel pnlCourses;
     }
 }

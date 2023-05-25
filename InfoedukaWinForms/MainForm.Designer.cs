@@ -55,7 +55,8 @@
             // 
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.Image = Properties.Resources.logoBot;
-            label1.Location = new Point(-8, 709);
+            label1.ImageAlign = ContentAlignment.BottomLeft;
+            label1.Location = new Point(0, 715);
             label1.MaximumSize = new Size(855, 44);
             label1.MinimumSize = new Size(855, 44);
             label1.Name = "label1";
@@ -126,9 +127,9 @@
             // 
             // pnlLogInForm
             // 
-            pnlLogInForm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlLogInForm.BackColor = SystemColors.ControlLightLight;
             pnlLogInForm.BackgroundImage = Properties.Resources.logInForm;
+            pnlLogInForm.BackgroundImageLayout = ImageLayout.Stretch;
             pnlLogInForm.Controls.Add(tbPass);
             pnlLogInForm.Controls.Add(tbEmail);
             pnlLogInForm.Controls.Add(btnExitWindow);
@@ -168,7 +169,7 @@
             btnLogOut.FlatStyle = FlatStyle.Flat;
             btnLogOut.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogOut.ForeColor = Color.Black;
-            btnLogOut.Location = new Point(859, 11);
+            btnLogOut.Location = new Point(841, 11);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Padding = new Padding(2);
             btnLogOut.Size = new Size(122, 42);
@@ -264,7 +265,7 @@
             btnExitMenu.FlatStyle = FlatStyle.Flat;
             btnExitMenu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnExitMenu.ForeColor = Color.White;
-            btnExitMenu.Location = new Point(984, 0);
+            btnExitMenu.Location = new Point(976, 0);
             btnExitMenu.Margin = new Padding(0);
             btnExitMenu.Name = "btnExitMenu";
             btnExitMenu.Size = new Size(32, 32);
@@ -275,9 +276,8 @@
             // 
             // pnlMenu
             // 
-            pnlMenu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlMenu.BackColor = Color.FromArgb(21, 21, 21);
-            pnlMenu.BackgroundImageLayout = ImageLayout.Center;
+            pnlMenu.BackgroundImageLayout = ImageLayout.Stretch;
             pnlMenu.Controls.Add(btnExitMenu);
             pnlMenu.Controls.Add(label3);
             pnlMenu.Controls.Add(label2);
@@ -286,31 +286,34 @@
             pnlMenu.Controls.Add(btnNotification);
             pnlMenu.Controls.Add(btnCourse);
             pnlMenu.Controls.Add(btnLogOut);
-            pnlMenu.Location = new Point(-8, 0);
+            pnlMenu.Dock = DockStyle.Top;
+            pnlMenu.Location = new Point(0, 0);
             pnlMenu.Margin = new Padding(0);
-            pnlMenu.MaximumSize = new Size(1023, 64);
-            pnlMenu.MinimumSize = new Size(1023, 64);
+            pnlMenu.MaximumSize = new Size(1015, 64);
+            pnlMenu.MinimumSize = new Size(1015, 64);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(1023, 64);
+            pnlMenu.Size = new Size(1015, 64);
             pnlMenu.TabIndex = 1;
             // 
             // pnlMain
             // 
+            pnlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMain.BackColor = Color.FromArgb(235, 235, 235);
             pnlMain.Location = new Point(0, 67);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1004, 639);
+            pnlMain.Size = new Size(1008, 638);
             pnlMain.TabIndex = 4;
             // 
             // MainForm
             // 
+            AcceptButton = btnLogIn;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(235, 235, 235);
             ClientSize = new Size(1008, 752);
             ControlBox = false;
-            Controls.Add(pnlLogInForm);
             Controls.Add(label1);
+            Controls.Add(pnlLogInForm);
             Controls.Add(pnlMenu);
             Controls.Add(pnlMain);
             MaximumSize = new Size(1024, 768);
