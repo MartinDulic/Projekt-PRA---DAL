@@ -42,6 +42,8 @@ namespace InfoedukaWinForms
         {
             // hide panel pnlMenu
             pnlMenu.Visible = false;
+            // press notifications button
+            btnNotification.PerformClick();
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -104,7 +106,7 @@ namespace InfoedukaWinForms
         private void btnNotification_Click(object sender, EventArgs e)
         {
             // open user control Notifications
-            Notifications notifications = new Notifications(isAdmin);
+            Notifications notifications = new Notifications(isAdmin, userId);
             notifications.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(notifications);
