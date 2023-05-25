@@ -223,5 +223,64 @@ namespace InfoedukaWinForms
             // reload courses
             LoadCourses();
         }
+
+        private void btnCourseCreate_Click(object sender, EventArgs e)
+        {
+            // if sender is edit button
+            if (lblAddOrUpdate.Text == "Edit Kolegija")
+            {
+                // get selected lecturer tag id in parent panel
+                int id = Convert.ToInt32(((Button)sender).Tag);
+                UpdateCourseById(id);
+            }
+            else
+            {
+                // add new course
+                AddCourse();
+            }
+
+        }
+
+        private void AddCourse()
+        {
+            // get course data
+            string name = tbCourseName.Text;
+            string description = tbCourseDescr.Text;
+            int ects = Convert.ToInt32(tbECTS.Text);
+            Predavac predavac = (Predavac)cbLecturer.SelectedItem;
+            int predavacId = predavac.Id;
+
+            // create new course
+            Kolegij kolegij = new Kolegij(name, ects, predavacId, description);
+
+            try
+            {
+                // add course to file
+                DataManager.GetKolegijiRepository().AddKolegij(kolegij);
+                // update predavac with kolegij id
+                DataManager.GetPredavacRepository().UpdatePredavacZaKolegijId(predavacId, kolegij.Id);
+
+                // make descrete notice
+                MessageBox.Show("Kolegij uspješno dodan!");              
+
+
+            }
+            catch (Exception)
+            {
+                // make descrete notice
+                MessageBox.Show("Pogreška pri dodavanju kolegija! Pokušajte ponovno.");
+            }
+
+            // return to main panel
+            ReturnToMainPanel();
+
+            // reload courses
+            LoadCourses();
+        }
+
+        private void UpdateCourseById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

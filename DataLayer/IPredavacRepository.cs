@@ -28,5 +28,8 @@ namespace DataLayer
 
         //Brise Predavaca
         void DeletePredavac(Predavac predavac);
+
+
+        void UpdatePredavacZaKolegijId(int predavacId, int id);
     }
 }

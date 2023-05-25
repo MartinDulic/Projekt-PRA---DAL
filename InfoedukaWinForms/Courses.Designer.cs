@@ -148,6 +148,7 @@
             btnCourseCreate.TabIndex = 6;
             btnCourseCreate.Text = "Potvrdi";
             btnCourseCreate.UseVisualStyleBackColor = false;
+            btnCourseCreate.Click += btnCourseCreate_Click;
             // 
             // label3
             // 

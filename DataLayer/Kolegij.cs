@@ -17,13 +17,13 @@ namespace DataLayer
         public int PredavacId { get; set; }
         public string Opis { get; set; }
 
-        public Kolegij(string naziv,int ects,int predavacId)
+        public Kolegij(string naziv,int ects,int predavacId, string opis)
         {
             Id = counter;
             Naziv = naziv;
             Ects = ects;
             PredavacId = predavacId;
-
+            Opis = opis;
         }
         public Kolegij() { }
 

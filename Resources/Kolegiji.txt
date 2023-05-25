@@ -20,3 +20,4 @@
 20%Vjerojatnost i statistika%5%0%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
 21%OOP praktikum u .NET okolini%5%0%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
 22%Programiranje u Javi 1%6%0%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+23%Programiranje u Javi 2%6%1%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
