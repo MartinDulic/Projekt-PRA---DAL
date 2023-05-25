@@ -20,10 +20,10 @@ namespace InfoedukaWinForms
         private enum Category
         {
             Obavijest = 1,
-            Dogadaj = 2,
+            Događaj = 2,
             Ispit = 3,
             Kolokvij = 4,
-            Vjezba = 5,
+            Vježba = 5,
             Predavanje = 6,
             Seminar = 7
         }
@@ -88,87 +88,100 @@ namespace InfoedukaWinForms
                     pnlNotification.BackColor = Color.White;
                     pnlNotification.Name = "pnl" + o.Naziv.Trim();
                     pnlNotification.Tag = o.Id;
-                    ////create new label for course name position top left
-                    //Label lblCourseName = new Label();
-                    //lblCourseName.Text = kolegij.Naziv;
-                    //lblCourseName.AutoSize = true;
-                    //lblCourseName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
-                    //lblCourseName.Location = new Point(10, 15);
-                    //// create new button btnDeleteCourse
-                    //Button btnDeleteCourse = new Button();
-                    //btnDeleteCourse.Text = "Obriši Kolegij";
-                    //btnDeleteCourse.AutoSize = true;
-                    //btnDeleteCourse.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-                    //btnDeleteCourse.FlatAppearance.BorderSize = 1;
-                    //btnDeleteCourse.FlatAppearance.BorderColor = Color.Red;
-                    //btnDeleteCourse.FlatStyle = FlatStyle.Flat;
-                    //btnDeleteCourse.ForeColor = Color.Red;
-                    //btnDeleteCourse.Location = new Point(580, 10);
-                    //btnDeleteCourse.Click += new EventHandler(btnDeleteCourse_Click);
-                    //// create new button btnEditCourse
-                    //Button btnEditCourse = new Button();
-                    //btnEditCourse.Text = "Napravi Izmjenu";
-                    //btnEditCourse.AutoSize = true;
-                    //btnEditCourse.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-                    //btnEditCourse.FlatAppearance.BorderSize = 1;
-                    //btnEditCourse.FlatAppearance.BorderColor = Color.Blue;
-                    //btnEditCourse.FlatStyle = FlatStyle.Flat;
-                    //btnEditCourse.ForeColor = Color.Blue;
-                    //btnEditCourse.Location = new Point(700, 10);
-                    //btnEditCourse.Click += new EventHandler(btnEditCourse_Click);
-                    //// create new lable for course description (opsi) position middle left
-                    //Label lblCourseDescription = new Label();
-                    //lblCourseDescription.Text = kolegij.Opis;
-                    //lblCourseDescription.AutoSize = true;
-                    //lblCourseDescription.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-                    //lblCourseDescription.Location = new Point(10, 100);
-                    //// create new label for course lecturer position bottom left
-                    //Label lblCourseLecturer = new Label();
-                    //// find lecurer by id from course and set name and surname
-                    //foreach (Predavac predavac in predavaci)
-                    //{
-                    //    if (predavac.Id == kolegij.PredavacId)
-                    //    {
-                    //        lblCourseLecturer.Text = predavac.Ime + " " + predavac.Prezime;
-                    //        break;
-                    //    }
-                    //    else
-                    //    {
-                    //        lblCourseLecturer.Text = " ";
-                    //    }
-                    //}
-                    //lblCourseLecturer.AutoSize = true;
-                    //lblCourseLecturer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-                    //lblCourseLecturer.Location = new Point(10, 170);
-                    //lblCourseLecturer.ForeColor = Color.Blue;
-                    //// create new lable for course ECTS position bottom right
-                    //Label lblCourseECTS = new Label();
-                    //lblCourseECTS.Text = "ECTS: " + kolegij.Ects.ToString();
-                    //lblCourseECTS.AutoSize = true;
-                    //lblCourseECTS.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-                    //lblCourseECTS.Location = new Point(750, 170);
 
-                    //// add labels to panel
-                    //pnlNotification.Controls.Add(lblCourseName);
-                    //if (isAdmin)
-                    //{
-                    //    pnlNotification.Controls.Add(btnDeleteCourse);
-                    //    pnlNotification.Controls.Add(btnEditCourse);
-                    //}
-                    //pnlNotification.Controls.Add(lblCourseDescription);
-                    //pnlNotification.Controls.Add(lblCourseLecturer);
-                    //pnlNotification.Controls.Add(lblCourseECTS);
+                    // create new label for notification name
+                    Label lblNotificationName = new Label();
+                    lblNotificationName.Text = o.Naziv;
+                    lblNotificationName.AutoSize = true;
+                    lblNotificationName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+                    lblNotificationName.Location = new Point(10, 15);
 
+                    // create new button btnDeleteCourse
+                    Button btnDeleteNotification = new Button();
+                    btnDeleteNotification.Text = "Obriši Obavijest";
+                    btnDeleteNotification.AutoSize = true;
+                    btnDeleteNotification.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    btnDeleteNotification.FlatAppearance.BorderSize = 1;
+                    btnDeleteNotification.FlatAppearance.BorderColor = Color.Red;
+                    btnDeleteNotification.FlatStyle = FlatStyle.Flat;
+                    btnDeleteNotification.ForeColor = Color.Red;
+                    btnDeleteNotification.Location = new Point(580, 10);
+                    btnDeleteNotification.Click += new EventHandler(btnDeleteNotification_Click);
+                    // create new button btnEditCourse
+                    Button btnEditNotification = new Button();
+                    btnEditNotification.Text = "Napravi Izmjenu";
+                    btnEditNotification.AutoSize = true;
+                    btnEditNotification.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    btnEditNotification.FlatAppearance.BorderSize = 1;
+                    btnEditNotification.FlatAppearance.BorderColor = Color.Blue;
+                    btnEditNotification.FlatStyle = FlatStyle.Flat;
+                    btnEditNotification.ForeColor = Color.Blue;
+                    btnEditNotification.Location = new Point(730, 10);
+                    btnEditNotification.Click += new EventHandler(btnEditNotification_Click);
+
+                    // create new lable for notification description (ops) position middle left
+                    Label lblNotificationDescription = new Label();
+                    lblNotificationDescription.Text = o.Opis;
+                    lblNotificationDescription.AutoSize = true;
+                    lblNotificationDescription.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    lblNotificationDescription.Location = new Point(10, 50);
+                    lblNotificationDescription.ForeColor = Color.Black;
+
+                    // create new label for course lecturer position bottom left
+                    Label lblNotificationLecturer = new Label();
+                    // find lecurer by id from course and set name and surname
+                    foreach (Predavac predavac in predavaci)
+                    {
+                        if (predavac.Id == o.KreatorId)
+                        {
+                            lblNotificationLecturer.Text = predavac.Ime + " " + predavac.Prezime;
+                            break;
+                        }
+                        else
+                        {
+                            lblNotificationLecturer.Text = "admin";
+                        }
+                    }
+                    lblNotificationLecturer.AutoSize = true;
+                    lblNotificationLecturer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+                    lblNotificationLecturer.Location = new Point(10, 150);
+                    lblNotificationLecturer.ForeColor = Color.Blue;
+
+                    // create new lable for notification category at bottom left
+                    Label lblNotificationCategory = new Label();
+                    lblNotificationCategory.Text = o.Kategorija;
+                    lblNotificationCategory.AutoSize = true;
+                    lblNotificationCategory.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+                    lblNotificationCategory.Location = new Point(10, 170);
+
+                    // create new label for date create and date expired at bottom right in format dd.MM.yyyy - dd.MM.yyyy
+                    Label lblNotificationDate = new Label();
+                    lblNotificationDate.Text = o.DatumObjave.ToString("dd.MM.yyyy") + " - " + o.DatumIsteka.ToString("dd.MM.yyyy");
+                    lblNotificationDate.AutoSize = true;
+                    lblNotificationDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+                    lblNotificationDate.Location = new Point(700, 170);
+
+                    // add labels to panel
+                    pnlNotification.Controls.Add(lblNotificationName);
+                    if (isAdmin)
+                    {
+                        pnlNotification.Controls.Add(btnDeleteNotification);
+                        pnlNotification.Controls.Add(btnEditNotification);
+                    }
+                    pnlNotification.Controls.Add(lblNotificationDescription);
+                    pnlNotification.Controls.Add(lblNotificationLecturer);
+                    pnlNotification.Controls.Add(lblNotificationCategory);
+                    pnlNotification.Controls.Add(lblNotificationDate);
 
                     // add panel
                     pnlNotifications.Controls.Add(pnlNotification);
 
-                    //// add empty panel to flLecturers
-                    //Panel pnlEmpty = new Panel();
-                    //pnlEmpty.Dock = DockStyle.Top;
-                    //pnlEmpty.Height = 30;
-                    //pnlEmpty.BackColor = Color.FromArgb(235, 235, 235);
-                    //pnlNotifications.Controls.Add(pnlEmpty);
+                    // add empty panel to flLecturers
+                    Panel pnlEmpty = new Panel();
+                    pnlEmpty.Dock = DockStyle.Top;
+                    pnlEmpty.Height = 30;
+                    pnlEmpty.BackColor = Color.FromArgb(235, 235, 235);
+                    pnlNotifications.Controls.Add(pnlEmpty);
                 }
 
 
@@ -179,6 +192,16 @@ namespace InfoedukaWinForms
                 MessageBox.Show("Greška prilikom učitavanja obavijesti!", "Pokušajte ponovno.");
             }
 
+        }
+
+        private void btnEditNotification_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnDeleteNotification_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnAddNotification_Click(object sender, EventArgs e)
