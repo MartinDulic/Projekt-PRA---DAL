@@ -62,7 +62,7 @@ namespace InfoedukaWinForms
                     btnDeleteLecturer.FlatAppearance.BorderColor = Color.Red;
                     btnDeleteLecturer.FlatStyle = FlatStyle.Flat;
                     btnDeleteLecturer.ForeColor = Color.Red;
-                    btnDeleteLecturer.Location = new Point(400, 10);
+                    btnDeleteLecturer.Location = new Point(350, 10);
                     btnDeleteLecturer.Click += new EventHandler(btnDeleteLecturer_Click);
                     // create new button btnEditLecturer
                     Button btnEditLecturer = new Button();

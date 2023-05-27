@@ -62,9 +62,11 @@
             btnAddNotification.FlatStyle = FlatStyle.Flat;
             btnAddNotification.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddNotification.ForeColor = Color.Blue;
-            btnAddNotification.Location = new Point(815, 65);
+            btnAddNotification.Location = new Point(738, 65);
+            btnAddNotification.MaximumSize = new Size(209, 29);
+            btnAddNotification.MinimumSize = new Size(209, 29);
             btnAddNotification.Name = "btnAddNotification";
-            btnAddNotification.Size = new Size(132, 29);
+            btnAddNotification.Size = new Size(209, 29);
             btnAddNotification.TabIndex = 1;
             btnAddNotification.Text = "+ Dodaj Obavijest";
             btnAddNotification.UseVisualStyleBackColor = true;

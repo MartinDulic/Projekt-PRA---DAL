@@ -108,7 +108,7 @@ namespace InfoedukaWinForms
                     btnDeleteNotification.FlatAppearance.BorderColor = Color.Red;
                     btnDeleteNotification.FlatStyle = FlatStyle.Flat;
                     btnDeleteNotification.ForeColor = Color.Red;
-                    btnDeleteNotification.Location = new Point(580, 10);
+                    btnDeleteNotification.Location = new Point(520, 10);
                     btnDeleteNotification.Click += new EventHandler(btnDeleteNotification_Click);
                     // create new button btnEditCourse
                     Button btnEditNotification = new Button();

@@ -177,9 +177,11 @@
             btnAddCourse.FlatStyle = FlatStyle.Flat;
             btnAddCourse.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddCourse.ForeColor = Color.Blue;
-            btnAddCourse.Location = new Point(829, 65);
+            btnAddCourse.Location = new Point(737, 65);
+            btnAddCourse.MaximumSize = new Size(209, 29);
+            btnAddCourse.MinimumSize = new Size(209, 29);
             btnAddCourse.Name = "btnAddCourse";
-            btnAddCourse.Size = new Size(117, 29);
+            btnAddCourse.Size = new Size(209, 29);
             btnAddCourse.TabIndex = 5;
             btnAddCourse.Text = "+ Dodaj Kolegij";
             btnAddCourse.UseVisualStyleBackColor = true;

@@ -197,9 +197,11 @@
             btnAddLecturer.FlatStyle = FlatStyle.Flat;
             btnAddLecturer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddLecturer.ForeColor = Color.Blue;
-            btnAddLecturer.Location = new Point(795, 65);
+            btnAddLecturer.Location = new Point(737, 65);
+            btnAddLecturer.MaximumSize = new Size(209, 29);
+            btnAddLecturer.MinimumSize = new Size(209, 29);
             btnAddLecturer.Name = "btnAddLecturer";
-            btnAddLecturer.Size = new Size(151, 29);
+            btnAddLecturer.Size = new Size(209, 29);
             btnAddLecturer.TabIndex = 5;
             btnAddLecturer.Text = "+ Dodaj Predavača";
             btnAddLecturer.UseVisualStyleBackColor = true;

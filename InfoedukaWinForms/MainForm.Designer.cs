@@ -80,6 +80,7 @@
             // btnLogIn
             // 
             btnLogIn.BackgroundImage = Properties.Resources.logIn;
+            btnLogIn.BackgroundImageLayout = ImageLayout.Stretch;
             btnLogIn.FlatAppearance.BorderColor = Color.White;
             btnLogIn.FlatAppearance.BorderSize = 0;
             btnLogIn.FlatAppearance.MouseDownBackColor = Color.RoyalBlue;
