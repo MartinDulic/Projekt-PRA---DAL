@@ -46,6 +46,9 @@ namespace InfoedukaWinForms
             // hide pnlAddCourse
             pnlAddCourse.Visible = false;
 
+            // clear all controls from pnlCourses
+            pnlCourses.Controls.Clear();
+
             try
             {
                 ISet<Kolegij> kolegiji = new HashSet<Kolegij>();

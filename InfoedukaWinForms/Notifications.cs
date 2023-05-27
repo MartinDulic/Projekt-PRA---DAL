@@ -52,6 +52,9 @@ namespace InfoedukaWinForms
             // hide pnlAddNotification
             pnlAddNotification.Visible = false;
 
+            // clear all controls from pnlNotifications
+            pnlNotifications.Controls.Clear();
+
             try
             {
                 ISet<Kolegij> kolegiji = new HashSet<Kolegij>();
@@ -163,11 +166,8 @@ namespace InfoedukaWinForms
 
                     // add labels to panel
                     pnlNotification.Controls.Add(lblNotificationName);
-                    if (isAdmin)
-                    {
-                        pnlNotification.Controls.Add(btnDeleteNotification);
-                        pnlNotification.Controls.Add(btnEditNotification);
-                    }
+                    pnlNotification.Controls.Add(btnDeleteNotification);
+                    pnlNotification.Controls.Add(btnEditNotification);
                     pnlNotification.Controls.Add(lblNotificationDescription);
                     pnlNotification.Controls.Add(lblNotificationLecturer);
                     pnlNotification.Controls.Add(lblNotificationCategory);
@@ -201,7 +201,28 @@ namespace InfoedukaWinForms
 
         private void btnDeleteNotification_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // prompt user to confirm delete
+            DialogResult dialogResult = MessageBox.Show("Jeste li sigurni da želite obrisati obavijest?", "Potvrda brisanja", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                // get notification id from button tag
+                int id = (int)((Button)sender).Parent.Tag;
+                Obavijest obavijest = DataManager.GetObavijestRepository().GetObavijestById(id);
+                // delete notification
+                DataManager.GetObavijestRepository().DeleteObavijest(obavijest);
+                // refresh form
+                LoadNotifications();
+            }
+            catch (Exception)
+            {
+                // make descrete notice
+                MessageBox.Show("Pogreška pri brisanju obavijesti! Pokušajte ponovno.");
+            }
         }
 
         private void btnAddNotification_Click(object sender, EventArgs e)
