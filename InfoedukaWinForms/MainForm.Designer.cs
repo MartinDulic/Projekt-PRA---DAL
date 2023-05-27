@@ -49,20 +49,22 @@
             pnlMain = new Panel();
             pnlLogInForm.SuspendLayout();
             pnlMenu.SuspendLayout();
+            pnlMain.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.Dock = DockStyle.Bottom;
             label1.Image = Properties.Resources.logoBot;
             label1.ImageAlign = ContentAlignment.BottomLeft;
-            label1.Location = new Point(0, 715);
+            label1.Location = new Point(0, 670);
             label1.MaximumSize = new Size(855, 44);
             label1.MinimumSize = new Size(855, 44);
             label1.Name = "label1";
             label1.Size = new Size(855, 44);
             label1.TabIndex = 2;
             label1.Text = "\r\n";
+            label1.TextAlign = ContentAlignment.BottomLeft;
             // 
             // label6
             // 
@@ -85,6 +87,8 @@
             btnLogIn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogIn.ForeColor = SystemColors.ControlLightLight;
             btnLogIn.Location = new Point(37, 320);
+            btnLogIn.MaximumSize = new Size(290, 40);
+            btnLogIn.MinimumSize = new Size(290, 40);
             btnLogIn.Name = "btnLogIn";
             btnLogIn.Size = new Size(290, 40);
             btnLogIn.TabIndex = 6;
@@ -137,7 +141,9 @@
             pnlLogInForm.Controls.Add(label5);
             pnlLogInForm.Controls.Add(btnLogIn);
             pnlLogInForm.Controls.Add(label6);
-            pnlLogInForm.Location = new Point(320, 178);
+            pnlLogInForm.Location = new Point(327, 63);
+            pnlLogInForm.MaximumSize = new Size(364, 461);
+            pnlLogInForm.MinimumSize = new Size(364, 461);
             pnlLogInForm.Name = "pnlLogInForm";
             pnlLogInForm.Size = new Size(364, 461);
             pnlLogInForm.TabIndex = 3;
@@ -145,6 +151,8 @@
             // tbPass
             // 
             tbPass.Location = new Point(37, 238);
+            tbPass.MaximumSize = new Size(290, 23);
+            tbPass.MinimumSize = new Size(290, 23);
             tbPass.Name = "tbPass";
             tbPass.Size = new Size(290, 23);
             tbPass.TabIndex = 10;
@@ -152,6 +160,8 @@
             // tbEmail
             // 
             tbEmail.Location = new Point(37, 176);
+            tbEmail.MaximumSize = new Size(290, 23);
+            tbEmail.MinimumSize = new Size(290, 23);
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(290, 23);
             tbEmail.TabIndex = 9;
@@ -170,6 +180,8 @@
             btnLogOut.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogOut.ForeColor = Color.Black;
             btnLogOut.Location = new Point(841, 11);
+            btnLogOut.MaximumSize = new Size(122, 42);
+            btnLogOut.MinimumSize = new Size(122, 42);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Padding = new Padding(2);
             btnLogOut.Size = new Size(122, 42);
@@ -299,9 +311,12 @@
             // 
             pnlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMain.BackColor = Color.FromArgb(235, 235, 235);
+            pnlMain.Controls.Add(pnlLogInForm);
             pnlMain.Location = new Point(0, 67);
+            pnlMain.MaximumSize = new Size(1008, 600);
+            pnlMain.MinimumSize = new Size(1008, 600);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1008, 638);
+            pnlMain.Size = new Size(1008, 600);
             pnlMain.TabIndex = 4;
             // 
             // MainForm
@@ -310,14 +325,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(235, 235, 235);
-            ClientSize = new Size(1008, 752);
+            ClientSize = new Size(1008, 714);
             ControlBox = false;
             Controls.Add(label1);
-            Controls.Add(pnlLogInForm);
             Controls.Add(pnlMenu);
             Controls.Add(pnlMain);
-            MaximumSize = new Size(1024, 768);
-            MinimumSize = new Size(1024, 768);
+            MaximumSize = new Size(1024, 730);
+            MinimumSize = new Size(1024, 730);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Load += MainForm_Load;
@@ -326,6 +340,7 @@
             pnlLogInForm.PerformLayout();
             pnlMenu.ResumeLayout(false);
             pnlMenu.PerformLayout();
+            pnlMain.ResumeLayout(false);
             ResumeLayout(false);
         }
 

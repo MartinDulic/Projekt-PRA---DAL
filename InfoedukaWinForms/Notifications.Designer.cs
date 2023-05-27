@@ -84,6 +84,8 @@
             pnlAddNotification.Controls.Add(label3);
             pnlAddNotification.Controls.Add(lblAddOrUpdateNtf);
             pnlAddNotification.Location = new Point(152, 65);
+            pnlAddNotification.MaximumSize = new Size(657, 508);
+            pnlAddNotification.MinimumSize = new Size(657, 508);
             pnlAddNotification.Name = "pnlAddNotification";
             pnlAddNotification.Size = new Size(657, 508);
             pnlAddNotification.TabIndex = 3;
@@ -212,10 +214,10 @@
             Controls.Add(btnAddNotification);
             Controls.Add(lbNotification);
             Controls.Add(pnlNotifications);
-            MaximumSize = new Size(1004, 639);
-            MinimumSize = new Size(1004, 639);
+            MaximumSize = new Size(1004, 600);
+            MinimumSize = new Size(1004, 600);
             Name = "Notifications";
-            Size = new Size(1004, 639);
+            Size = new Size(1004, 600);
             Load += Notifications_Load;
             pnlAddNotification.ResumeLayout(false);
             pnlAddNotification.PerformLayout();

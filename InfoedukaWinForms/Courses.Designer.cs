@@ -60,6 +60,8 @@
             pnlAddCourse.Controls.Add(label3);
             pnlAddCourse.Controls.Add(lblAddOrUpdateCrs);
             pnlAddCourse.Location = new Point(151, 65);
+            pnlAddCourse.MaximumSize = new Size(657, 508);
+            pnlAddCourse.MinimumSize = new Size(657, 508);
             pnlAddCourse.Name = "pnlAddCourse";
             pnlAddCourse.Size = new Size(657, 508);
             pnlAddCourse.TabIndex = 7;
@@ -210,10 +212,10 @@
             Controls.Add(btnAddCourse);
             Controls.Add(lbCourse);
             Controls.Add(pnlCourses);
-            MaximumSize = new Size(1004, 639);
-            MinimumSize = new Size(1004, 639);
+            MaximumSize = new Size(1004, 600);
+            MinimumSize = new Size(1004, 600);
             Name = "Courses";
-            Size = new Size(1004, 639);
+            Size = new Size(1004, 600);
             Load += Courses_Load;
             pnlAddCourse.ResumeLayout(false);
             pnlAddCourse.PerformLayout();

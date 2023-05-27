@@ -64,6 +64,8 @@
             pnlAddLecturer.Controls.Add(label3);
             pnlAddLecturer.Controls.Add(lblAddOrUpdate);
             pnlAddLecturer.Location = new Point(151, 65);
+            pnlAddLecturer.MaximumSize = new Size(657, 508);
+            pnlAddLecturer.MinimumSize = new Size(657, 508);
             pnlAddLecturer.Name = "pnlAddLecturer";
             pnlAddLecturer.Size = new Size(657, 508);
             pnlAddLecturer.TabIndex = 7;
@@ -230,10 +232,10 @@
             Controls.Add(btnAddLecturer);
             Controls.Add(lbLecturer);
             Controls.Add(pnlLecturers);
-            MaximumSize = new Size(1004, 639);
-            MinimumSize = new Size(1004, 639);
+            MaximumSize = new Size(1004, 600);
+            MinimumSize = new Size(1004, 600);
             Name = "Lecturers";
-            Size = new Size(1004, 639);
+            Size = new Size(1004, 600);
             Load += Lecturers_Load;
             pnlAddLecturer.ResumeLayout(false);
             pnlAddLecturer.PerformLayout();

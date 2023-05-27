@@ -144,7 +144,7 @@ namespace InfoedukaWinForms
                     if (isAdmin)
                     {
                         pnlCourse.Controls.Add(btnDeleteCourse);
-                        pnlCourse.Controls.Add(btnEditCourse); 
+                        pnlCourse.Controls.Add(btnEditCourse);
                     }
                     pnlCourse.Controls.Add(lblCourseDescription);
                     pnlCourse.Controls.Add(lblCourseLecturer);
