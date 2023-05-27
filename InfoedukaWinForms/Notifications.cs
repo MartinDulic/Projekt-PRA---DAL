@@ -196,7 +196,40 @@ namespace InfoedukaWinForms
 
         private void btnEditNotification_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            PrepareAddOrUpdateForm();
+
+            // change label text
+            lblAddOrUpdateNtf.Text = "Edit Obavijesti";
+
+            try
+            {
+                // get selected notification
+                int id = Convert.ToInt32(((Button)sender).Parent.Tag);
+                Obavijest obavijest = DataManager.GetObavijestRepository().GetObavijestById(id);
+                // fill in form with data
+                tbHeading.Text = obavijest.Naziv;
+                tbDescription.Text = obavijest.Opis;
+                cbCategory.SelectedItem = obavijest.Kategorija;
+                // fill in cbCourse by obavijest.¸KolegijId
+                // get all courses from database
+                ISet<Kolegij> kolegiji = DataManager.GetKolegijiRepository().GetKolegijiFromFile();
+                foreach (Kolegij kolegij in kolegiji)
+                {
+                    if (kolegij.Id == obavijest.KolegijId)
+                    {
+                        cbCourse.SelectedItem = kolegij.Naziv;
+                        break;
+                    }
+                }
+                // set button tag to notification id
+                btnNotificationCreate.Tag = obavijest.Id;
+
+            }
+            catch (Exception)
+            {
+                // descrete notification
+                MessageBox.Show("Greška prilikom izmjene obavijesti!", "Pokušajte ponovno.");
+            }
         }
 
         private void btnDeleteNotification_Click(object? sender, EventArgs e)
@@ -366,16 +399,26 @@ namespace InfoedukaWinForms
 
         private void UpdateNotificationById(int id)
         {
-            // hide pnlAddNotification
-            pnlAddNotification.Visible = false;
+            // get notification data from form
+            int kolegijId;
+            string naziv, opis, kategorija;
+            DateTime datumObjave, datumIsteka;
+            GetNotificationDataFromForm(out kolegijId, out naziv, out opis, out kategorija, out datumObjave, out datumIsteka);
 
-            // content Notifications
-            pnlNotifications.Visible = true;
-            lbNotification.Visible = true;
-            btnAddNotification.Visible = true;
+            // get notification by id
+            Obavijest obavijest = DataManager.GetObavijestRepository().GetObavijestById(id);
+            // update notification
+            obavijest.KolegijId = kolegijId;
+            obavijest.Naziv = naziv;
+            obavijest.Opis = opis;
+            obavijest.Kategorija = kategorija;
+            obavijest.DatumObjave = datumObjave;
+            obavijest.DatumIsteka = datumIsteka;
 
-            // clear panel
-            pnlNotifications.Controls.Clear();
+            // update notification in file
+            DataManager.GetObavijestRepository().UpdateObavijest(obavijest);
+
+            ReturnToMainPanel();
 
             // reload notifications
             LoadNotifications();

@@ -191,11 +191,13 @@ namespace InfoedukaWinForms
 
                 // set button tag to kolegij id
                 btnCourseCreate.Tag = kolegij.Id;
+
+
             }
             catch (Exception)
             {
                 // make descrete notice
-                MessageBox.Show("Pogreška pri učitavanju kolegija! Pokušajte ponovno.");
+                MessageBox.Show("Pogreška pri izmjene kolegija! Pokušajte ponovno.");
             }
         }
 

@@ -1,3 +1,3 @@
 1|18|-1|Test|Admin is testing the Notifications...|Događaj|25.5.2023. 0:00:00|25.7.2023. 0:00:00
-2|6|-1|Test|Testing Notifications...|Događaj|25.5.2023. 0:00:00|25.7.2023. 0:00:00
-3|22|1|Test br.1|Milica testira Notifications za Programiranje u Javi 1.|Događaj|25.5.2023. 0:00:00|25.7.2023. 0:00:00
+2|6|-1|Test|Testing Notifications.|Obavijest|27.5.2023. 0:00:00|27.7.2023. 0:00:00
+3|22|1|Test br.1|Milica testira Notifications za Programiranje u Javi 1.|Obavijest|27.5.2023. 0:00:00|27.7.2023. 0:00:00

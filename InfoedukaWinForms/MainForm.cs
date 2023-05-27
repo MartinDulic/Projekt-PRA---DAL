@@ -90,7 +90,6 @@ namespace InfoedukaWinForms
             pnlMenu.Visible = false;
             // clear all user controls
             pnlMain.Controls.Clear();
-
         }
 
         private void btnLecturer_Click(object sender, EventArgs e)

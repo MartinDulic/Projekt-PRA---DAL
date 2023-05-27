@@ -211,7 +211,7 @@ namespace InfoedukaWinForms
             }
             else
             {
-                // add new lecturer
+                // add new lecturer 
                 AddLecturer();
             }
 
