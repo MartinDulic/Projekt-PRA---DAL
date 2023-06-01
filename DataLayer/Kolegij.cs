@@ -9,22 +9,21 @@ namespace DataLayer
     public class Kolegij
     {
         private const char DEL = '%';
-        private int counter = Utilities.KolegijIdCounter;
+        private int counter = DataManager.KolegijIdCounter;
 
         public int Id { get; set; }
         public string Naziv { get; set; }
         public int Ects { get; set; }
         public int PredavacId { get; set; }
+        public string Opis { get; set; }
 
-
-
-        public Kolegij(string naziv,int ects,int predavacId)
+        public Kolegij(string naziv,int ects,int predavacId, string opis)
         {
             Id = counter;
             Naziv = naziv;
             Ects = ects;
             PredavacId = predavacId;
-
+            Opis = opis;
         }
         public Kolegij() { }
 
@@ -36,7 +35,7 @@ namespace DataLayer
     
 
 
-        public string PrepareForFileLine()=> $"{Id}{DEL}{Naziv}{DEL}{Ects}{DEL}{PredavacId}";
+        public string PrepareForFileLine()=> $"{Id}{DEL}{Naziv}{DEL}{Ects}{DEL}{PredavacId}{DEL}{Opis}";
 
         public static Kolegij ParseFromFileLine(string line)
         {
@@ -47,8 +46,8 @@ namespace DataLayer
                 Id=int.Parse(data[0]),
                 Naziv=data[1],
                 Ects=int.Parse(data[2]),
-                PredavacId=int.Parse(data[3])
-
+                PredavacId=int.Parse(data[3]),
+                Opis = data[4]
             };
 
 

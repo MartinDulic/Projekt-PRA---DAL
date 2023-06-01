@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public static class Utilities
+    public static class DataManager
     {
         private static readonly IPredavacRepository PREDAVAC_REPO= new FileRepositoryPredavac();
         private static readonly IAdminRepository ADMIN_REPO= new FileRepositoryAdmin();

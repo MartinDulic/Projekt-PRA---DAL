@@ -9,7 +9,7 @@ namespace DataLayer
 {
     class FileRepositoryKolegij : IKolegijiRepository
     {
-        private const string PATH = @"Kolegiji.txt";
+        private string _path = Settings.Default.ResourceDir + "Kolegiji.txt";
 
         public FileRepositoryKolegij() => CreateFileIfNonExistant();
 
@@ -17,9 +17,9 @@ namespace DataLayer
         {
             try
             {
-                if (!File.Exists(PATH))
+                if (!File.Exists(_path))
                 {
-                    File.Create(PATH).Close();
+                    File.Create(_path).Close();
                 }
             }
             catch (Exception e)
@@ -31,11 +31,11 @@ namespace DataLayer
         public ISet<Kolegij> GetKolegijiFromFile()
         {
             ISet<Kolegij> kolegiji = new HashSet<Kolegij>();
-            string[] lines = File.ReadAllLines(PATH);
+            string[] lines = File.ReadAllLines(_path);
             lines.ToList().ForEach(line => kolegiji.Add(Kolegij.ParseFromFileLine(line)));
 
-            if (kolegiji.Count() == 0) { Utilities.KolegijSetId(0); }
-            else { Utilities.KolegijSetId(kolegiji.Last().Id); }
+            if (kolegiji.Count() == 0) { DataManager.KolegijSetId(0); }
+            else { DataManager.KolegijSetId(kolegiji.Last().Id); }
 
             return kolegiji;
 
@@ -73,8 +73,8 @@ namespace DataLayer
             }
 
             kolegiji.Add(kolegij);
-            File.WriteAllLines(PATH, kolegiji.Select(k => k.PrepareForFileLine()));
-            Utilities.KolegijIdAddOne();
+            File.WriteAllLines(_path, kolegiji.Select(k => k.PrepareForFileLine()));
+            DataManager.KolegijIdAddOne();
         }
 
 
@@ -98,9 +98,9 @@ namespace DataLayer
                 }
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.KolegijSetId(kolegiji2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.KolegijSetId(kolegiji2.Last().Id);
 
             kolegiji2.ToList().ForEach(AddKolegij);
 
@@ -134,14 +134,28 @@ namespace DataLayer
 
             }
 
-            File.Delete(PATH);
-            File.Create(PATH).Close();
-            Utilities.KolegijSetId(kolegiji2.Last().Id);
+            File.Delete(_path);
+            File.Create(_path).Close();
+            DataManager.KolegijSetId(kolegiji2.Last().Id);
 
             kolegiji2.ToList().ForEach(AddKolegij);
 
         }
 
+        public void UpdateKolegijZaPredavacId(int crsID, int id)
+        {
+            // update kolegij with id crsID to have predavacId = id
+            ISet<Kolegij> kolegiji = GetKolegijiFromFile();
 
+            foreach (var k in kolegiji)
+            {
+                if (k.Id == crsID)
+                {
+                    k.PredavacId = id;
+                    UpdateKolegij(k);
+                    return;
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,21 @@
+1%Matematika I%4%1%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+2%Matematika II%5%2%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+3%Matematika III%6%5%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+4%Engleski jezik za IT%4%5%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+5%Osnove digitalne elektronike%6%3%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+6%Programiranje%6%2%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+7%Računalni alati u poslovanju%4%3%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+8%Uvod u računalne mreže%5%3%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+9%Građa računala%5%5%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+10%Matematička analiza%5%3%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+11%Osnove poslovne ekonomije%4%5%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+12%Osnove poslovnog komuniciranja%5%4%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+13%Strukture podataka i algoritmi%6%4%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+14%Uvod u baze podataka%5%4%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+15%Autentikacijski sustavi i baze podataka%4%4%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+16%Objektno orijentirano programiranje%6%1%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+17%Oblikovanje baza podataka%5%2%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+18%Operacijski sustavi%5%2%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+21%OOP praktikum u .NET okolini%5%5%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+22%Programiranje u Javi 1%6%1%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.
+23%Programiranje u Javi 2%6%1%Temeljni cilj kolegija upoznavanje je studenata s osnovnim konceptima i procesima.

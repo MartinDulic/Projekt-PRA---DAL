@@ -29,6 +29,7 @@ namespace DataLayer
         //Brise Kolegij
         void DeleteKolegij(Kolegij kolegij);
 
-
+        // Update Kolegij za PredavacId
+        void UpdateKolegijZaPredavacId(int crsID, int id);
     }
 }
