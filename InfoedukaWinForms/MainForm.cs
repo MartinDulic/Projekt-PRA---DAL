@@ -35,6 +35,7 @@ namespace InfoedukaWinForms
 
         private void Init()
         {
+            //Start up settings
             StartUpSetings();
         }
 
